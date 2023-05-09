@@ -1,4 +1,10 @@
-﻿#Copyright © 2018 Naturalpoint
+﻿# Modified by Brandon
+# Date Version Created: 2023-05-09
+# Date Last Edited: 2023-05-09
+# Modifications marked with "BJ:edit", "BJ:added", "BJ:removed"
+
+
+#Copyright © 2018 Naturalpoint
 #
 #Licensed under the Apache License, Version 2.0 (the "License")
 #you may not use this file except in compliance with the License.
@@ -19,13 +25,13 @@ import struct
 from threading import Thread
 import copy
 import time
-import DataDescriptions
-import MoCapData
+import NatNetPython.DataDescriptions as DataDescriptions # BJ:edit change to 'import as'
+import NatNetPython.MoCapData as MoCapData # BJ:edit change to 'import as'
 
 def trace( *args ):
     # uncomment the one you want to use
-    print( "".join(map(str,args)) )
-    #pass
+    #print( "".join(map(str,args)) ) # BJ:edit comment out
+    pass # BJ:edit uncomment
 
 #Used for Data Description functions
 def trace_dd( *args ):
@@ -776,6 +782,7 @@ class NatNetClient:
             data_dict[ "timestamp"] = timestamp
             data_dict[ "is_recording"] = is_recording
             data_dict[ "tracked_models_changed"] = tracked_models_changed
+            data_dict[ "rigid_body_data"] = copy.deepcopy(rigid_body_data) # BJ:added Just give me all the data please
 
             self.new_frame_listener( data_dict )
         trace_mf( "MoCap Frame End\n-----------------" )
@@ -1273,7 +1280,13 @@ class NatNetClient:
 
             offset_tmp, mocap_data = self.__unpack_mocap_data( data[offset:], packet_size, major, minor )
             offset += offset_tmp
-            print("MoCap Frame: %d\n"%(mocap_data.prefix_data.frame_number))
+            
+            # BJ:edit Print only every few frames
+            #print("MoCap Frame: %d\n"%(mocap_data.prefix_data.frame_number))
+            BJ_FN = mocap_data.prefix_data.frame_number
+            if (BJ_FN % 50) == 0:
+                print("MoCap Frame: %d\n"%(BJ_FN))
+            
             # get a string version of the data for output
             mocap_data_str=mocap_data.get_as_string()
             if print_level >= 1:
