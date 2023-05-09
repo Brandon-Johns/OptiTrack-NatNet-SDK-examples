@@ -5,6 +5,8 @@ Only the Python interface is provided. Only captures 'Rigid Body' objects, not s
 
 Note for ROS users: As an alternative to using the NatNet SDK, perhaps try the [vrpn_client_ros](http://wiki.ros.org/vrpn_client_ros)
 
+Note for working outdoors: See my notes [here](./readme-WorkingOutdoors.md)
+
 Related Software
 - [OptiTrack Motive](https://www.optitrack.com/support/downloads/motive.html)
 	- Any version should work
