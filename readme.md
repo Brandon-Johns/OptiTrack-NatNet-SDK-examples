@@ -73,6 +73,9 @@ This documentation is written in markdown. Please view it on GitHub or with a ma
 ## License
 This work is distributed under the [Apache 2.0 License](./LICENSE.txt)
 
+This documentation is distributed under the [Creative Commons CC BY 4.0 license](https://creativecommons.org/licenses/by/4.0/)
+
+
 ### Readme-NatNet.txt from the OptiTrack NatNet SDK
 NaturalPoint, Inc.
 
