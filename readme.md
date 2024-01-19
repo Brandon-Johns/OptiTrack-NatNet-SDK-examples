@@ -85,3 +85,7 @@ https://wiki.optitrack.com/index.php?title=NatNet_SDK
 
 A list of changes made in each version can be found at the following website:
 https://www.optitrack.com/support/downloads/developer-tools.html
+
+
+## Source Code
+This project is hosted at https://github.com/Brandon-Johns/OptiTrack-NatNet-SDK-examples
